@@ -22,6 +22,7 @@ public:
 };
 nodo::nodo()
 {
+    dato = 1;
     estado = false;
     siguienteNino = nullptr;
     siguienteAdulto = nullptr;
