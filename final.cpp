@@ -2,6 +2,7 @@
 #include <iostream>
 #include "reservas.hpp"
 
+reservas *reservacion = new reservas(); 
 using namespace std;
 /*
 TODO:
@@ -20,6 +21,7 @@ void menu();
 
 int main()
 {
+    reservacion->inicializa();
     menu();
 
     system("PAUSE");
@@ -33,7 +35,7 @@ void menu()
     {
         system("cls");
         cout << "\tBienvenido a reservaciones Mundo Galleta!" << endl;
-        cout << "Debido a la pandemia el máximo de comensales por mesa es 4, agradecemos su comprensión" << endl;
+        cout << "Debido a la pandemia el maximo de comensales por mesa es 4, agradecemos su comprensión" << endl;
         cout << "1) Revisar disponibilidad de hoy" << endl;
         cout << "2) Reservar mesa" << endl;
         cout << "3) Cancelar reservación" << endl;
@@ -52,38 +54,29 @@ void menu()
             }
             break;
         case 2:
+        {
             int aux = 0;
-            int comensales[4];
+            int comensal;
             while (aux < 4)
             {
                 system("cls");
                 cout << "Bienvenido al menu para reservar una mesa, por favor ayudenos con los siguientes datos\n";
-                cout << "1)Agregar niño   2)Agregar adulto   3)Terminar reservacion\n";
-                cin >> comensales[aux];
-                if (comensales[aux] == 3)
+                cout << "1)Agregar ninio   2)Agregar adulto   3)Terminar reservacion\n";
+                cin >> comensal;
+                if (comensal == 3)
                 {
                     break;
                 }
                 else
                 {
+                    reservacion->viajar(comensal);
                     aux++;
                 }
             }
             break;
+        }
         case 3:
-            /* code */
-            break;
-        case 4:
-            /* code */
-            break;
-        case 5:
-            /* code */
-            break;
-        case 6:
-            /* code */
-            break;
-        case 7:
-            /* code */
+            cout<<"HOLA";
             break;
         case 0:
             cout << "Gracias por su preferencia" << endl;
