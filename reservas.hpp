@@ -6,6 +6,7 @@
 #pragma once
 using namespace std;
 
+int disponibilidad = 8;
 class reservas
 {
 public:
@@ -14,6 +15,7 @@ public:
     nodo *actual;
     void inicializa();
     void viajar(int);
+    void estadoFinal();
 
 private:
 };
@@ -67,6 +69,7 @@ void reservas::inicializa()
     q10->siguienteNino = q11;
     q10->siguienteAdulto = q7;
 
+    q0->estado = true;
     q5->estado = true;
     q6->estado = true;
     q7->estado = true;
@@ -85,6 +88,19 @@ void reservas::viajar(int comensal)
     else
     {
         cout << "You shouldn't be able to read this lol\n";
+    }
+}
+
+void reservas::estadoFinal()
+{
+    if (actual->estado == true)
+    {
+        cout << "La reservacion se ha hecho correctamente\n";
+        disponibilidad--;
+    }
+    else
+    {
+        cout << "No se ha podido completar la reservacion\nPara evitar incidentes no es posible que en una mesa no haya ninios, o que haya ninios sin la supervision de un adulto\nAgradecemos su comprension.\n";
     }
 }
 #endif
