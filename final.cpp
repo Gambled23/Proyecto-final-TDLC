@@ -2,26 +2,24 @@
 #include <iostream>
 #include "reservas.hpp"
 
-reservas *reservacion = new reservas(); 
+reservas *reservacion = new reservas();
 using namespace std;
 /*
 TODO:
 //Menu para ver disponibilidad de mesas
 //Hacer funcion solo para ver si hay disponibles, no para reservar
-Menu para reservar mesa
+//Menu para reservar mesa
     //Pedir datos de los clientes
-    Revisar si se puede reservar una mesa (Maquina finita)
-
-
-Letrero de si se reservo o no y por q
+    //Revisar si se puede reservar una mesa (Maquina finita)
+    //Letrero de si se reservo o no y por q
 Cancelar reservacion mediante la ID de reservacion
+Arreglar contador de disponibilidad
 */
 
 void menu();
 
 int main()
 {
-    reservacion->inicializa();
     menu();
 
     system("PAUSE");
@@ -30,7 +28,6 @@ int main()
 void menu()
 {
     int opc;
-    int disponibilidad = 8;
     do
     {
         system("cls");
@@ -55,28 +52,41 @@ void menu()
             break;
         case 2:
         {
+            reservacion->inicializa();
             int aux = 0;
-            int comensal;
+            int ninios = 0, adultos = 0;
+            int comensal = 0;
+            bool aux2 = true;
             while (aux < 4)
             {
                 system("cls");
                 cout << "Bienvenido al menu para reservar una mesa, por favor ayudenos con los siguientes datos\n";
+                cout << "Ninios: " << ninios << "\tAdultos: " << adultos << endl;
                 cout << "1)Agregar ninio   2)Agregar adulto   3)Terminar reservacion\n";
                 cin >> comensal;
-                if (comensal == 3)
+                if (comensal == 1)
                 {
-                    break;
-                }
-                else
-                {
+                    ninios++;
                     reservacion->viajar(comensal);
                     aux++;
                 }
+                else if (comensal == 2)
+                {
+                    adultos++;
+                    reservacion->viajar(comensal);
+                    aux++;
+                }
+                else if (comensal == 3)
+                {
+                    reservacion->estadoFinal();
+                    break;
+                }
+                reservacion->estadoFinal();
             }
             break;
         }
         case 3:
-            cout<<"HOLA";
+            cout << "HOLA";
             break;
         case 0:
             cout << "Gracias por su preferencia" << endl;
