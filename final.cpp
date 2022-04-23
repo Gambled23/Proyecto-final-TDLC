@@ -12,7 +12,6 @@ TODO:
     //Pedir datos de los clientes
     //Revisar si se puede reservar una mesa (Maquina finita)
     //Letrero de si se reservo o no y por q
-Cancelar reservacion mediante la ID de reservacion
 Arreglar contador de disponibilidad
 */
 
@@ -35,7 +34,6 @@ void menu()
         cout << "Debido a la pandemia el maximo de comensales por mesa es 4, agradecemos su comprensión" << endl;
         cout << "1) Revisar disponibilidad de hoy" << endl;
         cout << "2) Reservar mesa" << endl;
-        cout << "3) Cancelar reservación" << endl;
         cout << "0) Salir" << endl;
         cin >> opc;
         switch (opc)
@@ -85,9 +83,6 @@ void menu()
             }
             break;
         }
-        case 3:
-            cout << "HOLA";
-            break;
         case 0:
             cout << "Gracias por su preferencia" << endl;
             break;
