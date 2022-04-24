@@ -4,6 +4,7 @@
 
 reservas *reservacion = new reservas();
 using namespace std;
+
 /*
 TODO:
 //Menu para ver disponibilidad de mesas
@@ -12,7 +13,8 @@ TODO:
     //Pedir datos de los clientes
     //Revisar si se puede reservar una mesa (Maquina finita)
     //Letrero de si se reservo o no y por q
-Arreglar contador de disponibilidad
+//Arreglar contador de disponibilidad
+Cancelar reserva
 */
 
 void menu();
@@ -50,36 +52,47 @@ void menu()
             break;
         case 2:
         {
-            reservacion->inicializa();
-            int aux = 0;
-            int ninios = 0, adultos = 0;
-            int comensal = 0;
-            bool aux2 = true;
-            while (aux < 4)
+            if (disponibilidad > 0)
             {
-                system("cls");
-                cout << "Bienvenido al menu para reservar una mesa, por favor ayudenos con los siguientes datos\n";
-                cout << "Ninios: " << ninios << "\tAdultos: " << adultos << endl;
-                cout << "1)Agregar ninio   2)Agregar adulto   3)Terminar reservacion\n";
-                cin >> comensal;
-                if (comensal == 1)
+                reservacion->inicializa();
+                int aux = 0;
+                int ninios = 0, adultos = 0;
+                int comensal = 0;
+                bool aux2 = true;
+                while (aux < 4)
                 {
-                    ninios++;
-                    reservacion->viajar(comensal);
-                    aux++;
+                    system("cls");
+                    cout << "Bienvenido al menu para reservar una mesa, por favor ayudenos con los siguientes datos\n";
+                    cout << "Ninios: " << ninios << "\tAdultos: " << adultos << endl;
+                    cout << "1)Agregar ninio   2)Agregar adulto   3)Terminar reservacion\n";
+                    cin >> comensal;
+                    if (comensal == 1)
+                    {
+                        ninios++;
+                        reservacion->viajar(comensal);
+                        aux++;
+                    }
+                    else if (comensal == 2)
+                    {
+                        adultos++;
+                        reservacion->viajar(comensal);
+                        aux++;
+                    }
+                    else if (comensal == 3)
+                    {
+                        aux2 = false;
+                        reservacion->estadoFinal();
+                        break;
+                    }
                 }
-                else if (comensal == 2)
-                {
-                    adultos++;
-                    reservacion->viajar(comensal);
-                    aux++;
-                }
-                else if (comensal == 3)
+                if (aux2)
                 {
                     reservacion->estadoFinal();
-                    break;
                 }
-                reservacion->estadoFinal();
+            }
+            else
+            {
+                cout << "Lamentablemente ya no tenemos mesas disponibles, por favor intente maniana\n";
             }
             break;
         }
