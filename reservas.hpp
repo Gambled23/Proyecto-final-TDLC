@@ -6,7 +6,9 @@
 #pragma once
 using namespace std;
 
-int disponibilidad = 8;
+int disponibilidad = 3;
+int id = 28;
+int idArr[3];
 class reservas
 {
 public:
@@ -16,6 +18,7 @@ public:
     void inicializa();
     void viajar(int);
     void estadoFinal();
+    void cancelarReserva();
 
 private:
 };
@@ -94,12 +97,39 @@ void reservas::estadoFinal()
 {
     if (actual->estado == true)
     {
-        cout << "La reservacion se ha hecho correctamente\n";
+        id += 2;
         disponibilidad--;
+        idArr[disponibilidad] = id;
+        cout << "La reservacion se ha hecho correctamente con la id: " << id << endl;
     }
     else
     {
         cout << "No se ha podido completar la reservacion\nPara evitar incidentes no es posible que en una mesa no haya ninios, o que haya ninios sin la supervision de un adulto\nAgradecemos su comprension.\n";
+    }
+}
+
+void reservas::cancelarReserva() //!No funca
+{
+    int aux;
+    bool auxBool = false;
+    cout << "Ingrese la ID de su reservacion\n";
+    cin >> aux;
+    for (size_t i = 0; i < disponibilidad; i++)
+    {
+        if (idArr[i] == aux)
+        {
+            idArr[i] = -1;
+            auxBool = true;
+            disponibilidad++;
+        }
+    }
+    if (auxBool)
+    {
+        cout << "Se ha cancelado correctamente su reservacion\nEsperamos vovler a tenerlo pronto!\n";
+    }
+    else
+    {
+        cout << "No se encuentra en el sistema la ID ingresada\nsi cree que se trata de un error favor de llamar al restaurante\n";
     }
 }
 #endif

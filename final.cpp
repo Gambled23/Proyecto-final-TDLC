@@ -14,7 +14,7 @@ TODO:
     //Revisar si se puede reservar una mesa (Maquina finita)
     //Letrero de si se reservo o no y por q
 //Arreglar contador de disponibilidad
-Cancelar reserva
+Arreglar sistema de cancelacion
 */
 
 void menu();
@@ -96,6 +96,9 @@ void menu()
             }
             break;
         }
+        case 3:
+            reservacion->cancelarReserva();
+            break;
         case 0:
             cout << "Gracias por su preferencia" << endl;
             break;
