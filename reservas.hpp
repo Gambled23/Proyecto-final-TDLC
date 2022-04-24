@@ -69,7 +69,6 @@ void reservas::inicializa()
     q10->siguienteNino = q11;
     q10->siguienteAdulto = q7;
 
-    q0->estado = true;
     q5->estado = true;
     q6->estado = true;
     q7->estado = true;
